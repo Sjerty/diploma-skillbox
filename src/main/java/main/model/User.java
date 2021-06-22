@@ -18,8 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(nullable = false)
-    @Type(type = "org.hibernate.type.NumericBooleanType")
+    @Column(nullable = false, columnDefinition = "org.hibernate.type.NumericBooleanType" )
     private boolean isModerator;// is this user a moderator
 
     @Column(nullable = false)
@@ -36,7 +35,7 @@ public class User {
 
     private String code;        // code for password resetting, can be NULL
 
-    @Type(type = "text")
+    @Column(columnDefinition = "text")
     private String photo;       // photo (link to te file), can be NULL
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

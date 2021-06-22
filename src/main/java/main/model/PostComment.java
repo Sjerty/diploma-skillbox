@@ -30,8 +30,7 @@ public class PostComment {
     @Column(nullable = false)
     private LocalDateTime time; // date and time of comment
 
-    @Column(nullable = false)
-    @Type(type = "text")
+    @Column(nullable = false, columnDefinition = "text")
     private String text;
 
     public int getId() {

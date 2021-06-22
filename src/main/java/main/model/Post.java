@@ -17,8 +17,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;                     // post id
 
-    @Column(nullable = false)
-    @Type(type = "org.hibernate.type.NumericBooleanType")
+    @Column(nullable = false, columnDefinition = "org.hibernate.type.NumericBooleanType")
     private boolean isActive;           // is published or not ( 0|1 )
 
     @Enumerated(EnumType.STRING)
@@ -152,9 +151,3 @@ public class Post {
     }
 }
 
-
-enum ModStat{
-    NEW,
-    ACCEPTED,
-    DECLINED
-}
