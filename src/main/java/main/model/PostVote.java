@@ -28,7 +28,7 @@ public class PostVote {
     @Column(nullable = false)
     private LocalDateTime time; // date and time of vote
 
-    @Column(nullable = false, columnDefinition = "org.hibernate.type.NumericBooleanType")
+    @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
     private boolean value;  // value ( like|dislike, 1|-1 )
 
     public int getId() {

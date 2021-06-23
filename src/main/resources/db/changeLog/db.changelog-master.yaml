@@ -1,2 +1,5 @@
 databaseChangeLog:
-  - logicalFilePath: db/changelog/db.changelog-lesson1.yaml
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - include:
+      file: liquibase-outputChangeLog.yml
+      relativeToChangelogFile: true

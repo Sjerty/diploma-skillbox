@@ -17,7 +17,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;                     // post id
 
-    @Column(nullable = false, columnDefinition = "org.hibernate.type.NumericBooleanType")
+    @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
     private boolean isActive;           // is published or not ( 0|1 )
 
     @Enumerated(EnumType.STRING)
