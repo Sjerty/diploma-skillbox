@@ -18,7 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(nullable = false, columnDefinition = "org.hibernate.type.NumericBooleanType" )
+    @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
     private boolean isModerator;// is this user a moderator
 
     @Column(nullable = false)
