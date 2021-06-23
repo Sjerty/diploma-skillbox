@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class PostComment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;         // comment id
 
     private int parentId;   // id of parent comment, may be NULL
