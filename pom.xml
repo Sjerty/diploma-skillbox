@@ -29,6 +29,9 @@
                 <version>4.4.0</version>
                 <configuration>
                     <propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
+                    <systemProperties>
+                        <user.name>Sjerty</user.name>
+                    </systemProperties>
                 </configuration>
             </plugin>
         </plugins>
