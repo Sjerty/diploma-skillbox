@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;                     // post id
 
     @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
