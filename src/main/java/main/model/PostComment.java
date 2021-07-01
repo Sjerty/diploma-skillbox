@@ -1,8 +1,10 @@
 package main.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,14 +19,16 @@ public class PostComment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;         // comment id
 
-    private int parentId;   // id of parent comment, may be NULL
+    private Integer parentId;   // id of parent comment, may be NULL
 
     @ManyToOne
     @JoinColumn(name = "post_id")
+    @JsonIgnoreProperties({"moderator", "user", "postVotes", "tags", "postComments"})
     private Post post; // post id
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"posts", "votes", "userCommentaries"})
     private User user;     // commentator id
 
     @Column(nullable = false)
@@ -41,11 +45,11 @@ public class PostComment {
         this.id = id;
     }
 
-    public int getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 
