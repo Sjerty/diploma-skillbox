@@ -1,5 +1,6 @@
 package main.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
@@ -22,14 +23,16 @@ public class Post {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ModStat moderationStatus;   // moderation status ( default "NEW" )
+    private ModStat moderationStatus = ModStat.NEW;   // moderation status ( default "NEW" )
 
     @ManyToOne
     @JoinColumn(name = "moderator_id", insertable = false, updatable = false)
+    @JsonIgnoreProperties({"posts", "votes", "userCommentaries"})
     private User moderator;      // mod's id - who changed moderationStatus
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JsonIgnoreProperties({"posts", "votes", "userCommentaries"})
     private User user; // author of the post
 
     @Column(nullable = false)
@@ -46,12 +49,15 @@ public class Post {
     private int viewCount;              // number of views
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    @JsonIgnoreProperties({"user", "posts"})
     private List<PostVote> postVotes;
 
     @ManyToMany(mappedBy = "posts")
+    @JsonIgnoreProperties("posts")
     private List<Tag> tags;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    @JsonIgnoreProperties({"user", "post"})
     private List<PostComment> postComments;
 
     public int getId() {

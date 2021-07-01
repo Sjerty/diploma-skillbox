@@ -1,5 +1,6 @@
 package main.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -19,11 +20,13 @@ public class Tag2Post {
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("postId")
     @JoinColumn(name = "post_id")
+    @JsonIgnoreProperties({"moderator", "user", "postVotes", "tags", "postComments"})
     Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("tagId")
     @JoinColumn(name = "tag_id")
+    @JsonIgnoreProperties("posts")
     Tag tag;
 
     public Tag2PostKey getId() {

@@ -1,5 +1,6 @@
 package main.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
@@ -19,10 +20,12 @@ public class PostVote {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JsonIgnoreProperties({"posts", "votes", "userCommentaries"})
     private User user; // voter's id
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", insertable = false, updatable = false)
+    @JsonIgnoreProperties({"moderator", "user", "postVotes", "tags", "postComments"})
     private Post post;     // post id
 
     @Column(nullable = false)
